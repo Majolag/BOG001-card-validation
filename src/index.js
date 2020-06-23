@@ -19,6 +19,7 @@ ingresar.addEventListener('click', () => {
 
     let valor = validator.isValid(tarjeta.value)
 
+
     if (valor) {
         alert(validator.maskify(tarjeta.value));
         numero.style.display = "none";
@@ -26,4 +27,6 @@ ingresar.addEventListener('click', () => {
     } else {
         alert("no valido");
     }
+    
+    
 });

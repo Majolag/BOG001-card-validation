@@ -1,10 +1,13 @@
 const validator = {
 
   isValid: num => {
-    // Accept only digits, dashes or spaces
-    if (/[^0-9-\s]+/.test(num)) return false;
+    /* Es una expresión regular que valida que se ingresen numeros del 0 al 9 el + es para que evalue si vienen más
+    números dentro de la cadena, el test valida que la expresión num, en este caso dice que si no hay numero o no se ingresa
+    el numero retorne false */
+    if (/[0-9]+/.test(!num) || num == "") return false;
 
-    // The Luhn Algorithm. It's so pretty.
+    // Evento adgoritmo luhn
+    
     let nCheck = 0, bEven = false;
     num = num.replace(/\D/g, "");
 
@@ -20,6 +23,9 @@ const validator = {
 
     return (nCheck % 10) == 0;
   },
+
+  // enmascarado de numeros
+
   maskify: num => {
 
     let mask_simbol = "*";
