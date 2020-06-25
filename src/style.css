@@ -196,7 +196,20 @@ input {
         box-shadow: 1px 5px 5px 1px rgba(80,80,80,0.3);
     }
 
+/*alert*/
 
+.alertBoton {
+    font-family: 'Bebas Neue', cursive;
+    background-color: #ffc100;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.alertBoton:hover {
+    background-color: #ffc100;
+    border: 2px solid #ffc100;
+}
 
 
 /*jquery*/

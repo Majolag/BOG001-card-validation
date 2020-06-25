@@ -26,6 +26,7 @@ ingresar.addEventListener('click', () => {
             text: 'Su número ' + (mascara) + ' es valido',
             icon: 'success',
             confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#FF7600',
             width: '30%',
         });
     
@@ -37,6 +38,7 @@ ingresar.addEventListener('click', () => {
             text: 'El número que ingreso no es valido',
             icon: 'error',
             confirmButtonText: 'Intente de nuevo',
+            confirmButtonColor: '#FF7600',
             width: '30%',
         });
     }
