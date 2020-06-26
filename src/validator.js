@@ -1,34 +1,53 @@
 const validator = {
 
-  isValid: num => {
-    // Accept only digits, dashes or spaces
-    if (/[^0-9-\s]+/.test(num)) return false;
+  isValid: cardNumber => {
 
-    // The Luhn Algorithm. It's so pretty.
-    let nCheck = 0, bEven = false;
-    num = num.replace(/\D/g, "");
+    /* Es una expresión regular, valida que se ingresen numeros del 0 al 9. el signo  + es para que evalue si vienen
+    más números dentro de la cadena, el test valida que la expresión !cardNumber, en este caso dice que si no hay
+    numero o no se ingresa el numero retorne false */
+    
+    if (/[0-9]+/.test(!cardNumber) || cardNumber == "") return false;
 
-    for (var n = num.length - 1; n >= 0; n--) {
-      var cDigit = num.charAt(n),
-        nDigit = parseInt(cDigit, 10);
+    // Evento adgoritmo luhn
+    
+    let sumaTotal = 0,
+        bEven = false;
 
-      if (bEven && (nDigit *= 2) > 9) nDigit -= 9;
+    for (var n = cardNumber.length - 1; n >= 0; n--) {
 
-      nCheck += nDigit;
+      //Obtener el caracter del string cardNumber.lenght - 1. para que comience desde el ultimo digito
+
+      var nCaracter = cardNumber.charAt(n),
+
+      // Convierte el string a un entero, 
+
+        nEntero = parseInt(nCaracter, 10);
+
+
+
+      if (bEven && (nEntero *= 2) > 9) nEntero -= 9;
+
+      sumaTotal += nEntero;
       bEven = !bEven;
     }
 
-    return (nCheck % 10) == 0;
+    return (sumaTotal % 10) == 0;
   },
-  maskify: num => {
 
-    let mask_simbol = "*";
-    if (num.length >= 4) {
-      let lastDigit = num.slice(-4);
-      let masked_str = mask_simbol.repeat(num.length - 4) + lastDigit;
-      return num = masked_str;
+  // Enmascarado de numeros
+
+  maskify: cardNumber => {
+
+    let mask_simbol = '#';
+
+    if (cardNumber.length >= 4) {
+      let lastDigit = cardNumber.slice(-4);
+      let masked_str = mask_simbol.repeat(cardNumber.length - 4) + lastDigit;
+
+      return cardNumber = masked_str;
+
     } else {
-      return num;
+      return cardNumber;
     }
   }
 };
